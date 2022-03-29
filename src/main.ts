@@ -1,8 +1,25 @@
 import './style.css'
 
-const app = document.querySelector<HTMLDivElement>('#app')!
 
-app.innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
+class Book{
+   title: string;
+   author: string;
+   pages: number;
+   status: string;
+
+   constructor(title: string, author: string, pages: number, status: string) {
+      this.title = title;
+      this.author = author;
+      this.pages = pages;
+      this.status = status;
+   }
+
+   bookInfo():string {
+        return this.title + " by "+ this.author + ", " + this.pages + " pages, "+ this.status;
+    };
+}
+
+let book1 = new Book("Acotar", "Maas", 365, "not read yet")
+console.log(book1.bookInfo())
+
+
