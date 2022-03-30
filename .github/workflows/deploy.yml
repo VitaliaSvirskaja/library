@@ -2,7 +2,7 @@ name: Github Deploy
 on: [push]
 jobs:
   Deploy-to-Github-Pages:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Check out
         uses: actions/checkout@v3
