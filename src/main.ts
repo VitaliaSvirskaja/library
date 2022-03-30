@@ -1,5 +1,5 @@
 import './style.css'
-
+const dialog = document.querySelector(".dialog");
 
 class Book{
    title: string;
@@ -20,6 +20,18 @@ class Book{
 }
 
 let book1 = new Book("Acotar", "Maas", 365, "not read yet")
-console.log(book1.bookInfo())
+console.log(book1.bookInfo());
 
+
+const createBookButton = document.querySelector("#createBook");
+createBookButton?.addEventListener("click", () => {
+   dialog?.classList.add("visible");
+   mainElement?.classList.add("blur");
+});
+
+const mainElement = document.querySelector("main");
+mainElement?.addEventListener("click", () => {
+   dialog?.classList.remove("visible");
+   mainElement?.classList.remove("blur");
+})
 
