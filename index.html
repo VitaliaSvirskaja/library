@@ -1,38 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Vite App</title>
-  </head>
-  <body>
-  <main>
+</head>
+<body>
+<main>
     <header>
-      <div class="logo">
-        <img src="bookshelf.png" alt="Book Logo">
-        <h1>My Library</h1>
-      </div>
-      <div class="library-log">
-        <h2>Library Log</h2>
-        <p>Total books count:</p>
-        <p>Read:</p>
-        <p>Not read:</p>
-      </div>
-    </header>
-      <div class="content">
-        <div class="book">
-          <h3 class="title"></h3>
-          <p class="author"></p>
-          <p class="pages"></p>
-          <p class="status"></p>
+        <div class="logo">
+            <img src="bookshelf.png" alt="Book Logo">
+            <h1>My Library</h1>
         </div>
-      </div>
-  </main>
-  <button id="createBook">+</button>
-  <div class="dialog">
-    Ich bin ein Dialogfenster!
-  </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+        <div class="library-log">
+            <h2>Library Log</h2>
+            <p>Total books count:</p>
+            <p>Read:</p>
+            <p>Not read:</p>
+        </div>
+    </header>
+    <div class="content">
+        <div class="book">
+            <h3 class="title"></h3>
+            <p class="author"></p>
+            <p class="pages"></p>
+            <p class="status"></p>
+        </div>
+    </div>
+</main>
+<button id="createBook">+</button>
+<dialog>
+    <form method="dialog">
+        <h2>Add a new book</h2>
+        <div class="bookTitle">
+            <label for="title">Book title*</label>
+            <input type="text" id="title" name="title" placeholder="Title">
+        </div>
+        <div class="bookAuthor">
+            <label for="author">Book author*</label>
+            <input type="text" id="author" name="author" placeholder="Author">
+        </div>
+        <div class="bookPages">
+            <label for="pages">Number of pages*</label>
+            <input type="number" id="pages" name="pages" placeholder="Number of pages">
+        </div>
+        <div class="bookStatus">
+            <label for="status">Book status*</label>
+            <select name="status" id="status">
+                <option value="" disabled selected>Have you read the book?</option>
+                <option value="read">Already read it</option>
+                <option value="not-read">Not read yet</option>
+            </select>
+        </div>
+        <div class="formButtons">
+            <button class="submitForm" type="submit">Add</button>
+            <button>Clear all fields</button>
+        </div>
+    </form>
+</dialog>
+<div id="overlay"></div>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
 </html>

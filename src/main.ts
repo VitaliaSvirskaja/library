@@ -1,21 +1,22 @@
 import './style.css'
-const dialog = document.querySelector(".dialog");
 
-class Book{
-   title: string;
-   author: string;
-   pages: number;
-   status: string;
+const dialog = document.querySelector("dialog");
 
-   constructor(title: string, author: string, pages: number, status: string) {
-      this.title = title;
-      this.author = author;
-      this.pages = pages;
-      this.status = status;
-   }
+class Book {
+    title: string;
+    author: string;
+    pages: number;
+    status: string;
 
-   bookInfo():string {
-        return this.title + " by "+ this.author + ", " + this.pages + " pages, "+ this.status;
+    constructor(title: string, author: string, pages: number, status: string) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+    }
+
+    bookInfo(): string {
+        return this.title + " by " + this.author + ", " + this.pages + " pages, " + this.status;
     };
 }
 
@@ -25,13 +26,40 @@ console.log(book1.bookInfo());
 
 const createBookButton = document.querySelector("#createBook");
 createBookButton?.addEventListener("click", () => {
-   dialog?.classList.add("visible");
-   mainElement?.classList.add("blur");
+    dialog?.setAttribute("open", "");
+    mainElement?.classList.add("blur");
+    showOverlay()
 });
 
-const mainElement = document.querySelector("main");
+const mainElement = document.querySelector("#overlay");
 mainElement?.addEventListener("click", () => {
-   dialog?.classList.remove("visible");
-   mainElement?.classList.remove("blur");
+    dialog?.removeAttribute("open");
+    mainElement?.classList.remove("blur");
+    hideOverlay()
 })
+
+
+const form = document.querySelector("form");
+form?.addEventListener("submit", () => {
+    const formData = new FormData(form);
+    // formData.get("title");
+    console.log(formData.get("title"))
+})
+
+function showOverlay() {
+    let overlay = document.getElementById("overlay");
+    if (overlay === null) {
+        return;
+    }
+    overlay.style.display = "block";
+
+}
+
+function hideOverlay() {
+    let overlay = document.getElementById("overlay");
+    if (overlay === null) {
+        return;
+    }
+    overlay.style.display = "none";
+}
 
