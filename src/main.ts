@@ -1,6 +1,7 @@
 import './style.css'
 
 const dialog = document.querySelector("dialog");
+const clearFields = document.querySelector(".clearFields")
 
 class Book {
     title: string;
@@ -38,13 +39,33 @@ mainElement?.addEventListener("click", () => {
     hideOverlay()
 })
 
-
 const form = document.querySelector("form");
 form?.addEventListener("submit", () => {
     const formData = new FormData(form);
     // formData.get("title");
     console.log(formData.get("title"))
+    mainElement?.classList.remove("blur");
+    hideOverlay()
 })
+
+clearFields?.addEventListener("click", (e) => {
+    function clearField(inputID:string) {
+        let inputElement = document.getElementById(inputID) as HTMLInputElement;
+        if (inputElement === null) {
+            return
+        }
+        inputElement.value=""
+    }
+    clearField("title")
+    clearField("author")
+    clearField("pages")
+    clearField("status")
+
+    e.preventDefault()
+})
+
+
+
 
 function showOverlay() {
     let overlay = document.getElementById("overlay");

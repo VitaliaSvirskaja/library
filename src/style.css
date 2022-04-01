@@ -19,7 +19,7 @@ body {
 }
 
 main {
-    width: 100%;
+    width: 70%;
     height: 100%;
     margin: auto;
 }
@@ -31,7 +31,6 @@ main {
 header {
     display: flex;
     justify-content: space-between;
-    width: 1200px;
     background-color: var(--primary-color);
     margin: auto;
     padding: 1rem;
@@ -68,13 +67,15 @@ h1, h2, h3, p {
     margin: 0;
 }
 
-.content {
-    display: flex;
-}
 
 .book {
     display: flex;
-    flex-direction: column;;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 1.5rem;
+
 }
 
 #createBook {
@@ -143,9 +144,12 @@ input {
     padding: 0.5rem;
 }
 
+
 select {
     font-size: 1rem;
 }
+
+
 
 button {
     width: 45%;
@@ -162,4 +166,13 @@ button {
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
     z-index: 2;
+}
+
+
+.content {
+    padding: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 2rem;
 }

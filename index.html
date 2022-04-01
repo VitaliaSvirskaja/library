@@ -22,10 +22,10 @@
     </header>
     <div class="content">
         <div class="book">
-            <h3 class="title"></h3>
-            <p class="author"></p>
-            <p class="pages"></p>
-            <p class="status"></p>
+            <h3 class="title">Title:</h3>
+            <p class="author">Author:</p>
+            <p class="pages">Number of Pages:</p>
+            <p class="status">Read:</p>
         </div>
     </div>
 </main>
@@ -34,20 +34,20 @@
     <form method="dialog">
         <h2>Add a new book</h2>
         <div class="bookTitle">
-            <label for="title">Book title*</label>
-            <input type="text" id="title" name="title" placeholder="Title">
+            <label for="title">Book title</label>
+            <input type="text" id="title" name="title" placeholder="Title" required>
         </div>
         <div class="bookAuthor">
-            <label for="author">Book author*</label>
-            <input type="text" id="author" name="author" placeholder="Author">
+            <label for="author">Book author</label>
+            <input type="text" id="author" name="author" placeholder="Author" required>
         </div>
         <div class="bookPages">
-            <label for="pages">Number of pages*</label>
-            <input type="number" id="pages" name="pages" placeholder="Number of pages">
+            <label for="pages">Number of pages</label>
+            <input type="number" id="pages" name="pages" placeholder="Number of pages" required>
         </div>
         <div class="bookStatus">
-            <label for="status">Book status*</label>
-            <select name="status" id="status">
+            <label for="status">Book status</label>
+            <select name="status" id="status" required>
                 <option value="" disabled selected>Have you read the book?</option>
                 <option value="read">Already read it</option>
                 <option value="not-read">Not read yet</option>
@@ -55,7 +55,7 @@
         </div>
         <div class="formButtons">
             <button class="submitForm" type="submit">Add</button>
-            <button>Clear all fields</button>
+            <button class="clearFields">Clear all fields</button>
         </div>
     </form>
 </dialog>
