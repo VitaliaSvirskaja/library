@@ -54,7 +54,7 @@ img:hover {
     cursor: pointer;
 }
 
-.library-log {
+.library-logo {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -169,7 +169,7 @@ button {
 }
 
 
-.content {
+#content {
     padding: 2rem 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);

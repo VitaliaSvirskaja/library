@@ -3,28 +3,6 @@ import './style.css'
 const dialog = document.querySelector("dialog");
 const clearFields = document.querySelector(".clearFields")
 
-class Book {
-    title: string;
-    author: string;
-    pages: number;
-    status: string;
-
-    constructor(title: string, author: string, pages: number, status: string) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.status = status;
-    }
-
-    bookInfo(): string {
-        return this.title + " by " + this.author + ", " + this.pages + " pages, " + this.status;
-    };
-}
-
-let book1 = new Book("Acotar", "Maas", 365, "not read yet")
-console.log(book1.bookInfo());
-
-
 const createBookButton = document.querySelector("#createBook");
 createBookButton?.addEventListener("click", () => {
     dialog?.setAttribute("open", "");
@@ -42,10 +20,19 @@ mainElement?.addEventListener("click", () => {
 const form = document.querySelector("form");
 form?.addEventListener("submit", () => {
     const formData = new FormData(form);
-    // formData.get("title");
-    console.log(formData.get("title"))
+    formData.get("titleInput");
+    console.log(formData.get("titleInput"))
     mainElement?.classList.remove("blur");
     hideOverlay()
+
+
+
+    const bookBox = document.createElement("div");
+    const bookTemplate = document.getElementById("book-template") as HTMLTemplateElement;
+    bookBox.appendChild(bookTemplate.content.cloneNode(true))
+
+    document.getElementById("content")?.appendChild(bookBox)
+
 })
 
 clearFields?.addEventListener("click", (e) => {
@@ -56,10 +43,10 @@ clearFields?.addEventListener("click", (e) => {
         }
         inputElement.value=""
     }
-    clearField("title")
-    clearField("author")
-    clearField("pages")
-    clearField("status")
+    clearField("titleInput")
+    clearField("authorInput")
+    clearField("pagesInput")
+    clearField("statusInput")
 
     e.preventDefault()
 })
@@ -83,4 +70,7 @@ function hideOverlay() {
     }
     overlay.style.display = "none";
 }
+
+
+
 

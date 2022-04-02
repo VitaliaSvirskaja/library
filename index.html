@@ -13,20 +13,20 @@
             <img src="bookshelf.png" alt="Book Logo">
             <h1>My Library</h1>
         </div>
-        <div class="library-log">
+        <div class="library-logo">
             <h2>Library Log</h2>
             <p>Total books count:</p>
             <p>Read:</p>
             <p>Not read:</p>
         </div>
     </header>
-    <div class="content">
-        <div class="book">
-            <h3 class="title">Title:</h3>
-            <p class="author">Author:</p>
-            <p class="pages">Number of Pages:</p>
-            <p class="status">Read:</p>
-        </div>
+    <div id="content">
+        <template id="book-template">
+            <p id="title">Title:</p>
+            <p id="author">Author:</p>
+            <p id="pages">Number of Pages:</p>
+            <p id="status">Read:</p>
+        </template>
     </div>
 </main>
 <button id="createBook">+</button>
@@ -35,19 +35,19 @@
         <h2>Add a new book</h2>
         <div class="bookTitle">
             <label for="title">Book title</label>
-            <input type="text" id="title" name="title" placeholder="Title" required>
+            <input type="text" id="titleInput" name="title" placeholder="Title" required>
         </div>
         <div class="bookAuthor">
             <label for="author">Book author</label>
-            <input type="text" id="author" name="author" placeholder="Author" required>
+            <input type="text" id="authorInput" name="author" placeholder="Author" required>
         </div>
         <div class="bookPages">
             <label for="pages">Number of pages</label>
-            <input type="number" id="pages" name="pages" placeholder="Number of pages" required>
+            <input type="number" id="pagesInput" name="pages" placeholder="Number of pages" required>
         </div>
         <div class="bookStatus">
             <label for="status">Book status</label>
-            <select name="status" id="status" required>
+            <select name="status" id="statusInput" required>
                 <option value="" disabled selected>Have you read the book?</option>
                 <option value="read">Already read it</option>
                 <option value="not-read">Not read yet</option>
