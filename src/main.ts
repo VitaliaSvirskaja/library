@@ -3,6 +3,7 @@ import './style.css'
 function initData() {
     const allBooks = getAllBooks()
     renderBooks(allBooks)
+    setCount(allBooks.length)
 }
 initData()
 const dialog = document.querySelector("dialog");
@@ -122,5 +123,11 @@ function addAnotherBook(book: BookInterface) {
     allBooks.push(book)
     saveAllBooks(allBooks)
     renderBooks(allBooks)
+    setCount(allBooks.length)
+}
+
+function setCount(count:number) {
+    const bookCount = document.querySelector("#bookCount");
+    bookCount!.innerHTML = "Total books count: " + count
 }
 
