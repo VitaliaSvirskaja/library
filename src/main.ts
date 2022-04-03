@@ -4,6 +4,8 @@ function initData() {
     const allBooks = getAllBooks()
     renderBooks(allBooks)
     setCount(allBooks.length)
+    countBooksRead(allBooks)
+    countBooksNotRead(allBooks)
 }
 initData()
 const dialog = document.querySelector("dialog");
@@ -124,6 +126,8 @@ function addAnotherBook(book: BookInterface) {
     saveAllBooks(allBooks)
     renderBooks(allBooks)
     setCount(allBooks.length)
+    countBooksRead(allBooks)
+    countBooksNotRead(allBooks)
 }
 
 function setCount(count:number) {
@@ -131,3 +135,15 @@ function setCount(count:number) {
     bookCount!.innerHTML = "Total books count: " + count
 }
 
+function countBooksRead(books:BookInterface[]) {
+    const booksReadCount = document.querySelector("#booksReadCount");
+    const booksRead = books.filter((book) => book.status === "read")
+    booksReadCount!.innerHTML= "Read: " + booksRead.length
+}
+
+
+function countBooksNotRead(books:BookInterface[]) {
+    const booksNotReadCount = document.querySelector("#booksNotReadCount")
+    const booksNotRead = books.filter((book) => book.status === "not-read")
+    booksNotReadCount!.innerHTML = "Not read: " + booksNotRead.length
+}
