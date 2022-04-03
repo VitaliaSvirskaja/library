@@ -176,3 +176,21 @@ button {
     grid-template-rows: 1fr 1fr;
     gap: 2rem;
 }
+
+.book-template-content{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+   justify-content: center;
+    border: 1px solid lightgrey;
+    background-color: lightgrey;
+    border-radius: 8px;
+    padding: 0.5rem;
+
+}
+
+.deleteBook {
+    align-self: flex-end;
+    justify-items: center;
+    width: 2rem;
+}

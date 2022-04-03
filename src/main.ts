@@ -7,6 +7,7 @@ function initData() {
     countBooksRead(allBooks)
     countBooksNotRead(allBooks)
 }
+
 initData()
 const dialog = document.querySelector("dialog");
 const createBookButton = document.querySelector("#createBook");
@@ -56,7 +57,7 @@ mainElement?.addEventListener("click", () => {
 const form = document.querySelector("form");
 form?.addEventListener("submit", () => {
     const formData = new FormData(form);
-    const newBook :BookInterface = {
+    const newBook: BookInterface = {
         title: formData.get("title") as string,
         author: formData.get("author") as string,
         numberOfPages: parseInt(formData.get("pages") as string),
@@ -93,9 +94,9 @@ interface BookInterface {
 
 function renderBooks(books: BookInterface[]) {
     const contentContainer = document.querySelector("#content")
-    contentContainer!.innerHTML="";
+    contentContainer!.innerHTML = "";
     const bookTemplate = document.querySelector("#book-template") as HTMLTemplateElement
-    books.forEach(book => {
+    books.forEach((book,bookIndex) => {
         const bookBox = document.createElement("div")
         bookBox.appendChild(bookTemplate.content.cloneNode(true))
         bookBox.querySelector(".title")!.textContent = "Title: " + book.title
@@ -103,6 +104,10 @@ function renderBooks(books: BookInterface[]) {
         bookBox.querySelector(".pages")!.textContent = "Number of pages: " + book.numberOfPages.toString()
         bookBox.querySelector(".status")!.textContent = "Status: " + book.status
         contentContainer?.appendChild(bookBox)
+        const deleteBookButton = bookBox.querySelector(".deleteBook")
+        deleteBookButton?.addEventListener("click", () => {
+            deleteBook(bookIndex)
+        })
     })
 }
 
@@ -130,20 +135,30 @@ function addAnotherBook(book: BookInterface) {
     countBooksNotRead(allBooks)
 }
 
-function setCount(count:number) {
+function setCount(count: number) {
     const bookCount = document.querySelector("#bookCount");
     bookCount!.innerHTML = "Total books count: " + count
 }
 
-function countBooksRead(books:BookInterface[]) {
+function countBooksRead(books: BookInterface[]) {
     const booksReadCount = document.querySelector("#booksReadCount");
     const booksRead = books.filter((book) => book.status === "read")
-    booksReadCount!.innerHTML= "Read: " + booksRead.length
+    booksReadCount!.innerHTML = "Read: " + booksRead.length
 }
 
 
-function countBooksNotRead(books:BookInterface[]) {
+function countBooksNotRead(books: BookInterface[]) {
     const booksNotReadCount = document.querySelector("#booksNotReadCount")
     const booksNotRead = books.filter((book) => book.status === "not-read")
     booksNotReadCount!.innerHTML = "Not read: " + booksNotRead.length
 }
+
+
+function deleteBook (bookIndex:number) {
+    const books = getAllBooks()
+    books.splice(bookIndex,1)
+    saveAllBooks(books)
+    renderBooks(books)
+}
+
+
